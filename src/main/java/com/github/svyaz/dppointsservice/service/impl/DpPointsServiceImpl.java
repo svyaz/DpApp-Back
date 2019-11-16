@@ -2,6 +2,7 @@ package com.github.svyaz.dppointsservice.service.impl;
 
 import com.github.svyaz.dppointsservice.model.City;
 import com.github.svyaz.dppointsservice.model.Country;
+import com.github.svyaz.dppointsservice.model.DpService;
 import com.github.svyaz.dppointsservice.service.DpPointsService;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +37,16 @@ public class DpPointsServiceImpl implements DpPointsService {
         list.add(new City(8,3, "Ош"));
         list.add(new City(9,3, "Манас"));
 
+        return list;
+    }
+
+    @Override
+    public List<DpService> getServicesList() {
+        List<DpService> list = new ArrayList<>();
+        list.add(new DpService(1, "Прием денежного перевода"));
+        list.add(new DpService(2, "Выдача денежного перевода"));
+        list.add(new DpService(3, "Гашение кредитов"));
+        list.add(new DpService(4, "Выдача переводов от юрлиц"));
         return list;
     }
 }

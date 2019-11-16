@@ -6,47 +6,51 @@ import com.github.svyaz.dppointsservice.model.DpService;
 import com.github.svyaz.dppointsservice.service.DpPointsService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class DpPointsServiceImpl implements DpPointsService {
 
-    @Override
-    public List<Country> getCountriesList(String filterString) {
-        List<Country> list = new ArrayList<>();
-        list.add(new Country(1, "Россия"));
-        list.add(new Country(2, "Таджикистан"));
-        list.add(new Country(3, "Киргизия"));
-        return list;
+    //TODO: debug
+    private List<Country> countries = new ArrayList<>();
+
+    DpPointsServiceImpl() {
+        countries.add(new Country((long) 1, "Россия"));
+        countries.add(new Country((long) 2, "Таджикистан"));
+        countries.add(new Country((long) 3, "Киргизия"));
     }
 
     @Override
-    public List<City> getCitiesList(int countryId, String filterString) {
-        List<City> list = new ArrayList<>();
-
-        list.add(new City(1,1, "Москва"));
-        list.add(new City(2,1, "Новосибирск"));
-        list.add(new City(3,1, "Кемерово"));
-
-        list.add(new City(4,2, "Душанбе"));
-        list.add(new City(5,2, "Истаравшан"));
-
-        list.add(new City(6,3, "Бишкек"));
-        list.add(new City(7,3, "Кант"));
-        list.add(new City(8,3, "Ош"));
-        list.add(new City(9,3, "Манас"));
-
-        return list;
+    public Set<Country> getCountries(String filterString) {
+        return new HashSet<>(countries);
     }
 
     @Override
-    public List<DpService> getServicesList() {
-        List<DpService> list = new ArrayList<>();
-        list.add(new DpService(1, "Прием денежного перевода"));
-        list.add(new DpService(2, "Выдача денежного перевода"));
-        list.add(new DpService(3, "Гашение кредитов"));
-        list.add(new DpService(4, "Выдача переводов от юрлиц"));
-        return list;
+    public Set<City> getCities(Long countryId, String filterString) {
+        Set<City> set = new HashSet<>();
+
+        set.add(new City((long) 1, countries.get(1), "Москва"));
+        set.add(new City((long) 2, countries.get(1), "Новосибирск"));
+        set.add(new City((long) 3, countries.get(1), "Кемерово"));
+
+        set.add(new City((long) 4, countries.get(2), "Душанбе"));
+        set.add(new City((long) 5, countries.get(2), "Истаравшан"));
+
+        set.add(new City((long) 6, countries.get(3), "Бишкек"));
+        set.add(new City((long) 7, countries.get(3), "Кант"));
+        set.add(new City((long) 8, countries.get(3), "Ош"));
+        set.add(new City((long) 9, countries.get(3), "Манас"));
+
+        return set;
+    }
+
+    @Override
+    public Set<DpService> getServices() {
+        Set<DpService> set = new HashSet<>();
+        set.add(new DpService((long) 1, "Прием денежного перевода"));
+        set.add(new DpService((long) 2, "Выдача денежного перевода"));
+        set.add(new DpService((long) 3, "Гашение кредитов"));
+        set.add(new DpService((long) 4, "Выдача переводов от юрлиц"));
+        return set;
     }
 }

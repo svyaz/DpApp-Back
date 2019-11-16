@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/api/v1", produces = "application/json")
@@ -34,27 +35,27 @@ public class DpPointsController {
 
     @GetMapping(value = "/countries")
     @ResponseBody
-    public ResponseEntity<List<CountryDto>> getCountriesList(
+    public ResponseEntity<Set<CountryDto>> getCountries(
             @RequestParam(value = "filter", required = false) String filterString) {
-        List<CountryDto> countryDtoList = countryToCountryDtoConverter.convert(service.getCountriesList(filterString));
-        return ResponseEntity.ok(countryDtoList);
+        Set<CountryDto> countryDtoSet = countryToCountryDtoConverter.convert(service.getCountries(filterString));
+        return ResponseEntity.ok(countryDtoSet);
     }
 
     @GetMapping(value = "/countries/{countryId}/cities")
     @ResponseBody
     // TODO:  @Pattern(regexp = "^[0-9]{1,3}$", message = "Неверный идентификатор страны")
-    public ResponseEntity<List<CityDto>> getCitiesList(
-            @PathVariable(name = "countryId") int countryId,
+    public ResponseEntity<Set<CityDto>> getCities(
+            @PathVariable(name = "countryId") long countryId,
             @RequestParam(value = "filter", required = false) String filterString) {
-        List<CityDto> cityDtoList = cityToCityDtoConverter.convert(service.getCitiesList(countryId, filterString));
-        return ResponseEntity.ok(cityDtoList);
+        Set<CityDto> cityDtoSet = cityToCityDtoConverter.convert(service.getCities(countryId, filterString));
+        return ResponseEntity.ok(cityDtoSet);
     }
 
     @GetMapping(value = "/services")
     @ResponseBody
-    public ResponseEntity<List<DpServiceDto>> getServicesList() {
-        List<DpServiceDto> dpServiceListDto = dpServiceToDpServiceDtoConverter.convert(service.getServicesList());
-        return ResponseEntity.ok(dpServiceListDto);
+    public ResponseEntity<Set<DpServiceDto>> getServices() {
+        Set<DpServiceDto> dpServiceDto = dpServiceToDpServiceDtoConverter.convert(service.getServices());
+        return ResponseEntity.ok(dpServiceDto);
     }
 
     @GetMapping(value = "/points")

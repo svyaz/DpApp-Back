@@ -4,12 +4,12 @@ import com.github.svyaz.dppointsservice.model.City;
 import com.github.svyaz.dppointsservice.model.Country;
 import com.github.svyaz.dppointsservice.model.DpService;
 
-import java.util.List;
+import java.util.Set;
 
 public interface DpPointsService {
-    List<Country> getCountriesList(String filterString);
+    Set<Country> getCountries(String filterString);
 
-    List<City> getCitiesList(int countryId, String filterString);
+    Set<City> getCities(Long countryId, String filterString);
 
-    List<DpService> getServicesList();
+    Set<DpService> getServices();
 }

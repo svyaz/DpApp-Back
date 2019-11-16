@@ -5,25 +5,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "dp-service")
-public class DpService {
+@Table(name = "bank")
+public class Bank {
 
     @Id
     @GeneratedValue
     @Column(name = "id")
     private Long id;
 
-    @ManyToMany(mappedBy = "dpServices")
+    @OneToMany(mappedBy = "bank")
     private Set<DpPoint> dpPoints = new HashSet<>();
 
     @Column(name = "name")
     private String name;
-
-    //TODO: for debug
-    public DpService(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 
     public Long getId() {
         return id;

@@ -1,31 +1,57 @@
 package com.github.svyaz.dppointsservice.model;
 
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "city")
 public class City {
-    private int id;
-    private int countryId;
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "country_id", nullable = false)
+    private Country country;
+
+    @OneToMany(mappedBy = "city")
+    private Set<DpPoint> dpPoints = new HashSet<>();
+
+    @Column(name = "name")
     private String name;
 
     //TODO: constructor for debug only
-    public City(int id, int countryId, String name) {
+    public City(Long id, Country country, String name) {
         this.id = id;
-        this.countryId = countryId;
+        this.country = country;
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public int getCountryId() {
-        return countryId;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCountryId(int countryId) {
-        this.countryId = countryId;
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public Set<DpPoint> getDpPoints() {
+        return dpPoints;
+    }
+
+    public void setDpPoints(Set<DpPoint> dpPoints) {
+        this.dpPoints = dpPoints;
     }
 
     public String getName() {

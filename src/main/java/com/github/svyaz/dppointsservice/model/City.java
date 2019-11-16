@@ -5,12 +5,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "city")
+@Table(name = "CITY")
 public class City {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "ID")
     private Long id;
 
     @ManyToOne
@@ -20,7 +20,7 @@ public class City {
     @OneToMany(mappedBy = "city")
     private Set<DpPoint> dpPoints = new HashSet<>();
 
-    @Column(name = "name")
+    @Column(name = "NAME")
     private String name;
 
     //TODO: constructor for debug only

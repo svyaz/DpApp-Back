@@ -7,15 +7,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "country")
+@Table(name = "COUNTRY")
 public class Country {
 
     @Id
     @GeneratedValue
-    @Column(name="id")
+    @Column(name="ID")
     private Long id;
 
-    @Column(name="name")
+    @Column(name="NAME")
     private String name;
 
     @OneToMany(mappedBy = "country")

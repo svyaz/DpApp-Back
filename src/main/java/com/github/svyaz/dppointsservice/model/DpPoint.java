@@ -5,33 +5,33 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "dp-point")
+@Table(name = "DPPOINT")
 public class DpPoint {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "ID")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "city_id", nullable = false)
+    @JoinColumn(name = "CITY_ID", nullable = false)
     private City city;
 
     @ManyToOne
-    @JoinColumn(name = "bank_id", nullable = false)
+    @JoinColumn(name = "BANK_ID", nullable = false)
     private Bank bank;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "dp-point_dp-service",
-            joinColumns = @JoinColumn(name = "dp-point_id"),
-            inverseJoinColumns = @JoinColumn(name = "dp-service_id")
+    @JoinTable(name = "DPPOINT_DPSERVICE",
+            joinColumns = @JoinColumn(name = "DPPOINT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "DPSERVICE_ID")
     )
     private Set<DpService> dpServices = new HashSet<>();
 
-    @Column(name = "name")
+    @Column(name = "NAME")
     private String name;
 
-    @Column(name = "address")
+    @Column(name = "ADDRESS")
     private String address;
 
     public Long getId() {

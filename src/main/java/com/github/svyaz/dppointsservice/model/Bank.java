@@ -5,18 +5,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "bank")
+@Table(name = "BANK")
 public class Bank {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "ID")
     private Long id;
 
     @OneToMany(mappedBy = "bank")
     private Set<DpPoint> dpPoints = new HashSet<>();
 
-    @Column(name = "name")
+    @Column(name = "NAME")
     private String name;
 
     public Long getId() {

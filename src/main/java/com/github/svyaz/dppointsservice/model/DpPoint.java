@@ -9,7 +9,7 @@ import java.util.Set;
 public class DpPoint {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
 
@@ -28,10 +28,10 @@ public class DpPoint {
     )
     private Set<DpService> dpServices = new HashSet<>();
 
-    @Column(name = "NAME")
+    @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "ADDRESS")
+    @Column(name = "ADDRESS", nullable = false)
     private String address;
 
     public Long getId() {

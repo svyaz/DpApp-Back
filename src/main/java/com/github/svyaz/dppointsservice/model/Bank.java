@@ -9,14 +9,14 @@ import java.util.Set;
 public class Bank {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
 
-    @OneToMany(mappedBy = "bank")
+    @OneToMany(mappedBy = "bank", fetch = FetchType.LAZY)
     private Set<DpPoint> dpPoints = new HashSet<>();
 
-    @Column(name = "NAME")
+    @Column(name = "NAME", nullable = false)
     private String name;
 
     public Long getId() {

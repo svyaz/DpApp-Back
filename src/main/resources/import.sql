@@ -1,0 +1,1 @@
+-- INSERT INTO "DP_APP"."COUNTRY" (NAME) VALUES ('Россия');

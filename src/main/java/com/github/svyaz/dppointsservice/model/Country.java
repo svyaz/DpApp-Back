@@ -1,7 +1,5 @@
 package com.github.svyaz.dppointsservice.model;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,14 +9,14 @@ import java.util.Set;
 public class Country {
 
     @Id
-    @GeneratedValue
-    @Column(name="ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private Long id;
 
-    @Column(name="NAME")
+    @Column(name = "NAME", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "country")
+    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
     private Set<City> cities = new HashSet<>();
 
     //TODO: constructor for debug only

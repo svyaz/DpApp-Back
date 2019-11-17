@@ -9,14 +9,14 @@ import java.util.Set;
 public class DpService {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
 
-    @ManyToMany(mappedBy = "dpServices")
+    @ManyToMany(mappedBy = "dpServices", fetch = FetchType.LAZY)
     private Set<DpPoint> dpPoints = new HashSet<>();
 
-    @Column(name = "NAME")
+    @Column(name = "NAME", nullable = false)
     private String name;
 
     //TODO: for debug

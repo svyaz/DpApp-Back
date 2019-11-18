@@ -1,15 +1,12 @@
 package com.github.svyaz.dppointsservice.service;
 
 import com.github.svyaz.dppointsservice.model.City;
-import com.github.svyaz.dppointsservice.model.Country;
 import com.github.svyaz.dppointsservice.model.DpService;
 
-import java.util.Set;
+import java.util.List;
 
 public interface DpPointsService {
-    Set<Country> getCountries(String filterString);
+    List<City> getCities(Long countryId, String filterString);
 
-    Set<City> getCities(Long countryId, String filterString);
-
-    Set<DpService> getServices();
+    List<DpService> getServices();
 }

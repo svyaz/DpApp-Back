@@ -19,12 +19,6 @@ public class Country {
     @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
     private Set<City> cities = new HashSet<>();
 
-    //TODO: constructor for debug only
-    public Country(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
     public Long getId() {
         return id;
     }

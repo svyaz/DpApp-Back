@@ -7,12 +7,12 @@ import com.github.svyaz.dppointsservice.converter.DpServiceToDpServiceDtoConvert
 import com.github.svyaz.dppointsservice.dto.CityDto;
 import com.github.svyaz.dppointsservice.dto.CountryDto;
 import com.github.svyaz.dppointsservice.dto.DpServiceDto;
+import com.github.svyaz.dppointsservice.service.CountryService;
 import com.github.svyaz.dppointsservice.service.DpPointsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/api/v1", produces = "application/json")
@@ -22,40 +22,47 @@ public class DpPointsController {
     private final CountryToCountryDtoConverter countryToCountryDtoConverter;
     private final CityToCityDtoConverter cityToCityDtoConverter;
     private final DpServiceToDpServiceDtoConverter dpServiceToDpServiceDtoConverter;
+    private final CountryService countryService;
 
     public DpPointsController(DpPointsService dpPointsService,
                               CountryToCountryDtoConverter countryToCountryDtoConverter,
                               CityToCityDtoConverter cityToCityDtoConverter,
-                              DpServiceToDpServiceDtoConverter dpServiceToDpServiceDtoConverter) {
+                              DpServiceToDpServiceDtoConverter dpServiceToDpServiceDtoConverter, CountryService countryService) {
+        this.countryService = countryService;
+
         this.service = dpPointsService;
+
         this.countryToCountryDtoConverter = countryToCountryDtoConverter;
+
         this.cityToCityDtoConverter = cityToCityDtoConverter;
+
         this.dpServiceToDpServiceDtoConverter = dpServiceToDpServiceDtoConverter;
+
     }
 
     @GetMapping(value = "/countries")
     @ResponseBody
-    public ResponseEntity<Set<CountryDto>> getCountries(
+    public ResponseEntity<List<CountryDto>> getCountries(
             @RequestParam(value = "filter", required = false) String filterString) {
-        Set<CountryDto> countryDtoSet = countryToCountryDtoConverter.convert(service.getCountries(filterString));
-        return ResponseEntity.ok(countryDtoSet);
+        List<CountryDto> countryDtoList = countryToCountryDtoConverter.convert(countryService.getCountries(filterString));
+        return ResponseEntity.ok(countryDtoList);
     }
 
     @GetMapping(value = "/countries/{countryId}/cities")
     @ResponseBody
     // TODO:  @Pattern(regexp = "^[0-9]{1,3}$", message = "Неверный идентификатор страны")
-    public ResponseEntity<Set<CityDto>> getCities(
+    public ResponseEntity<List<CityDto>> getCities(
             @PathVariable(name = "countryId") long countryId,
             @RequestParam(value = "filter", required = false) String filterString) {
-        Set<CityDto> cityDtoSet = cityToCityDtoConverter.convert(service.getCities(countryId, filterString));
-        return ResponseEntity.ok(cityDtoSet);
+        List<CityDto> cityDtoList = cityToCityDtoConverter.convert(service.getCities(countryId, filterString));
+        return ResponseEntity.ok(cityDtoList);
     }
 
     @GetMapping(value = "/services")
     @ResponseBody
-    public ResponseEntity<Set<DpServiceDto>> getServices() {
-        Set<DpServiceDto> dpServiceDto = dpServiceToDpServiceDtoConverter.convert(service.getServices());
-        return ResponseEntity.ok(dpServiceDto);
+    public ResponseEntity<List<DpServiceDto>> getServices() {
+        List<DpServiceDto> dpServiceDtoList = dpServiceToDpServiceDtoConverter.convert(service.getServices());
+        return ResponseEntity.ok(dpServiceDtoList);
     }
 
     @GetMapping(value = "/points")

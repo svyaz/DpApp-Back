@@ -7,6 +7,7 @@ import com.github.svyaz.dppointsservice.converter.DpServiceToDpServiceDtoConvert
 import com.github.svyaz.dppointsservice.dto.CityDto;
 import com.github.svyaz.dppointsservice.dto.CountryDto;
 import com.github.svyaz.dppointsservice.dto.DpServiceDto;
+import com.github.svyaz.dppointsservice.service.CityService;
 import com.github.svyaz.dppointsservice.service.CountryService;
 import com.github.svyaz.dppointsservice.service.DpPointsService;
 import org.springframework.http.ResponseEntity;
@@ -23,11 +24,14 @@ public class DpPointsController {
     private final CityToCityDtoConverter cityToCityDtoConverter;
     private final DpServiceToDpServiceDtoConverter dpServiceToDpServiceDtoConverter;
     private final CountryService countryService;
+    private final CityService cityService;
 
     public DpPointsController(DpPointsService dpPointsService,
                               CountryToCountryDtoConverter countryToCountryDtoConverter,
                               CityToCityDtoConverter cityToCityDtoConverter,
-                              DpServiceToDpServiceDtoConverter dpServiceToDpServiceDtoConverter, CountryService countryService) {
+                              DpServiceToDpServiceDtoConverter dpServiceToDpServiceDtoConverter,
+                              CountryService countryService,
+                              CityService cityService) {
         this.countryService = countryService;
 
         this.service = dpPointsService;
@@ -38,6 +42,7 @@ public class DpPointsController {
 
         this.dpServiceToDpServiceDtoConverter = dpServiceToDpServiceDtoConverter;
 
+        this.cityService = cityService;
     }
 
     @GetMapping(value = "/countries")
@@ -54,7 +59,7 @@ public class DpPointsController {
     public ResponseEntity<List<CityDto>> getCities(
             @PathVariable(name = "countryId") long countryId,
             @RequestParam(value = "filter", required = false) String filterString) {
-        List<CityDto> cityDtoList = cityToCityDtoConverter.convert(service.getCities(countryId, filterString));
+        List<CityDto> cityDtoList = cityToCityDtoConverter.convert(cityService.getCities(countryId, filterString));
         return ResponseEntity.ok(cityDtoList);
     }
 

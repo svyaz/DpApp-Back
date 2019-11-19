@@ -19,12 +19,6 @@ public class DpService {
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    //TODO: for debug
-    public DpService(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
     public Long getId() {
         return id;
     }

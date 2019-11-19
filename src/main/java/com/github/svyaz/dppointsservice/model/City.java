@@ -23,13 +23,6 @@ public class City {
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    //TODO: constructor for debug only
-    public City(Long id, Country country, String name) {
-        this.id = id;
-        this.country = country;
-        this.name = name;
-    }
-
     public Long getId() {
         return id;
     }

@@ -15,8 +15,4 @@ public class DpPointsServiceImpl implements DpPointsService {
         return null;
     }
 
-    @Override
-    public List<DpService> getServices() {
-        return null;
-    }
 }

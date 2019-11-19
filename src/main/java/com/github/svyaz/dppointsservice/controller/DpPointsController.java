@@ -10,6 +10,7 @@ import com.github.svyaz.dppointsservice.dto.DpServiceDto;
 import com.github.svyaz.dppointsservice.service.CityService;
 import com.github.svyaz.dppointsservice.service.CountryService;
 import com.github.svyaz.dppointsservice.service.DpPointsService;
+import com.github.svyaz.dppointsservice.service.DpServiceService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,13 +26,15 @@ public class DpPointsController {
     private final DpServiceToDpServiceDtoConverter dpServiceToDpServiceDtoConverter;
     private final CountryService countryService;
     private final CityService cityService;
+    private final DpServiceService dpServiceService;
 
     public DpPointsController(DpPointsService dpPointsService,
                               CountryToCountryDtoConverter countryToCountryDtoConverter,
                               CityToCityDtoConverter cityToCityDtoConverter,
                               DpServiceToDpServiceDtoConverter dpServiceToDpServiceDtoConverter,
                               CountryService countryService,
-                              CityService cityService) {
+                              CityService cityService,
+                              DpServiceService dpServiceService) {
         this.countryService = countryService;
 
         this.service = dpPointsService;
@@ -43,6 +46,7 @@ public class DpPointsController {
         this.dpServiceToDpServiceDtoConverter = dpServiceToDpServiceDtoConverter;
 
         this.cityService = cityService;
+        this.dpServiceService = dpServiceService;
     }
 
     @GetMapping(value = "/countries")
@@ -66,7 +70,7 @@ public class DpPointsController {
     @GetMapping(value = "/services")
     @ResponseBody
     public ResponseEntity<List<DpServiceDto>> getServices() {
-        List<DpServiceDto> dpServiceDtoList = dpServiceToDpServiceDtoConverter.convert(service.getServices());
+        List<DpServiceDto> dpServiceDtoList = dpServiceToDpServiceDtoConverter.convert(dpServiceService.getServices());
         return ResponseEntity.ok(dpServiceDtoList);
     }
 

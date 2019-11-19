@@ -8,6 +8,7 @@ import java.util.Set;
 @Table(name = "BANK")
 public class Bank {
 
+    //TODO: сделать ID через базу
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")

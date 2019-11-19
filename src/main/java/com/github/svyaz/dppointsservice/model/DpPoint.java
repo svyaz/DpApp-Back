@@ -7,7 +7,7 @@ import java.util.Set;
 @Entity
 @Table(name = "DPPOINT")
 public class DpPoint {
-
+    //TODO: сделать ID через базу
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")

@@ -14,7 +14,6 @@ import java.util.List;
 
 @Repository
 public class DpServiceDaoImpl implements DpServiceDao {
-
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -23,11 +22,8 @@ public class DpServiceDaoImpl implements DpServiceDao {
     public List<DpService> getList() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<DpService> cq = cb.createQuery(DpService.class);
-
         Root<DpService> root = cq.from(DpService.class);
         CriteriaQuery<DpService> select = cq.select(root);
-
         return entityManager.createQuery(select).getResultList();
-        //TODO: хм... расписать запрос!
     }
 }

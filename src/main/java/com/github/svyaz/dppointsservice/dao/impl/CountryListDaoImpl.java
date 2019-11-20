@@ -15,7 +15,6 @@ import java.util.List;
 
 @Repository
 public class CountryListDaoImpl implements CountryListDao {
-
     @PersistenceContext
     protected EntityManager entityManager;
 
@@ -36,6 +35,7 @@ public class CountryListDaoImpl implements CountryListDao {
         CriteriaQuery<Country> select = cq.select(root);
         return entityManager.createQuery(select).getResultList();
 
+        /* JPQL variant */
         /*String query = "SELECT c FROM Country c " +
                 "WHERE lower(c.name) LIKE lower(concat('%', :filter, '%'))";
 

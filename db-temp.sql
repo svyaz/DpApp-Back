@@ -111,3 +111,15 @@ CREATE TABLE "DP_APP"."DPPOINT_DPSERVICE"
 
    COMMENT ON COLUMN "DP_APP"."DPPOINT_DPSERVICE"."DPPOINT" IS 'Идентификатор точки ДП';
    COMMENT ON COLUMN "DP_APP"."DPPOINT_DPSERVICE"."DPSERVICE" IS 'Идентификатор сервиса ДП';
+
+/*
+SELECT * FROM DPPOINT p
+INNER JOIN BANK b
+  ON b.id = p.bank_id
+INNER JOIN DPPOINT_DPSERVICE ps
+  ON ps.dppoint_id = p.id
+INNER JOIN DPSERVICE s
+  ON s.id = ps.dpservice_id
+WHERE p.city_id = 4 AND
+  s.id IN (2, 3);
+ */

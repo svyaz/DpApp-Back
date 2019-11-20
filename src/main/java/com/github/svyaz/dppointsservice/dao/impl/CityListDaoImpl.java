@@ -26,5 +26,6 @@ public class CityListDaoImpl implements CityListDao {
                 .setParameter("countryId", countryId)
                 .setParameter("filter", filter)
                 .getResultList();
+        //TODO переделать на объекты
     }
 }

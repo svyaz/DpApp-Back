@@ -9,7 +9,6 @@ import java.util.List;
 
 @Service
 public class CountryServiceImpl implements CountryService {
-
     private CountryListDao countryDao;
 
     public CountryServiceImpl(CountryListDao dao) {

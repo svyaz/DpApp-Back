@@ -1,7 +1,8 @@
 package com.github.svyaz.dppointsservice.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,7 +16,8 @@ public class Bank {
     private Long id;
 
     @OneToMany(mappedBy = "bank", fetch = FetchType.LAZY)
-    private Set<DpPoint> dpPoints = new HashSet<>();
+    @JsonBackReference
+    private Set<DpPoint> dpPoints;
 
     @Column(name = "NAME", nullable = false)
     private String name;

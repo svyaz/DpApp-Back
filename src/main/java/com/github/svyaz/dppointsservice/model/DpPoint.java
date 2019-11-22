@@ -1,7 +1,8 @@
 package com.github.svyaz.dppointsservice.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,18 +16,21 @@ public class DpPoint {
 
     @ManyToOne
     @JoinColumn(name = "CITY_ID", nullable = false)
+    @JsonManagedReference
     private City city;
 
     @ManyToOne
     @JoinColumn(name = "BANK_ID", nullable = false)
+    @JsonManagedReference
     private Bank bank;
 
     @ManyToMany(cascade = CascadeType.ALL)
+    @JsonManagedReference
     @JoinTable(name = "DPPOINT_DPSERVICE",
             joinColumns = @JoinColumn(name = "DPPOINT_ID"),
             inverseJoinColumns = @JoinColumn(name = "DPSERVICE_ID")
     )
-    private Set<DpService> dpServices = new HashSet<>();
+    private Set<DpService> dpServices;
 
     @Column(name = "NAME", nullable = false)
     private String name;

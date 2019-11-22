@@ -5,11 +5,10 @@ import com.github.svyaz.dppointsservice.model.DpPoint;
 import com.github.svyaz.dppointsservice.service.DpPointsService;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
 
 @Service
 public class DpPointsServiceImpl implements DpPointsService {
-
     private final DpPointDao dpPointDao;
 
     public DpPointsServiceImpl(DpPointDao dpPointDao) {

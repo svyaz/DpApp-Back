@@ -1,7 +1,8 @@
 package com.github.svyaz.dppointsservice.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,7 +18,8 @@ public class Country {
     private String name;
 
     @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
-    private Set<City> cities = new HashSet<>();
+    @JsonManagedReference
+    private Set<City> cities;
 
     public Long getId() {
         return id;

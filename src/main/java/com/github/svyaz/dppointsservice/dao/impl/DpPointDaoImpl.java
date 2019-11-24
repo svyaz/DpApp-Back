@@ -19,7 +19,6 @@ public class DpPointDaoImpl implements DpPointDao {
     @Override
     @Transactional
     public List<DpPoint> getPoints(long cityId, long[] serviceIds) {
-
         List<Long> servicesList = Arrays.stream(serviceIds)
                 .boxed()
                 .collect(Collectors.toList());

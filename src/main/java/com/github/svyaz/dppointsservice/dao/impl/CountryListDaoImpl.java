@@ -21,8 +21,6 @@ public class CountryListDaoImpl implements CountryListDao {
     @Override
     @Transactional
     public List<Country> getList(String filter) {
-        //TODO: Русские символы в фильтре приводят к исключениям
-
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Country> cq = cb.createQuery(Country.class);
         Root<Country> root = cq.from(Country.class);

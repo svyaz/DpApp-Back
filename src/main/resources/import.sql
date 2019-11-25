@@ -1,1 +1,59 @@
--- INSERT INTO "DP_APP"."COUNTRY" (NAME) VALUES ('Россия');
+-- TODO: не сделаны тригеры для БД.
+
+INSERT INTO "DP_APP"."DPSERVICE" (ID, NAME) VALUES (1, 'Прием денежного перевода');
+INSERT INTO "DP_APP"."DPSERVICE" (ID, NAME) VALUES (2, 'Выдача денежного перевода');
+INSERT INTO "DP_APP"."DPSERVICE" (ID, NAME) VALUES (3, 'Гашение кредитов');
+INSERT INTO "DP_APP"."DPSERVICE" (ID, NAME) VALUES (4, 'Выдача переводов от юрлиц');
+
+INSERT INTO "DP_APP"."COUNTRY" (ID, NAME) VALUES (1, 'Россия');
+INSERT INTO "DP_APP"."COUNTRY" (ID, NAME) VALUES (2, 'Киргизия');
+
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (1, 1, 'г. Томск');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (2, 1, 'г. Северск');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (3, 1, 'г. Новосибирск');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (4, 1, 'г. Искитим');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (5, 1, 'г. Камень-на-Оби');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (6, 1, 'г. Барабинск');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (7, 1, 'г. Бердск');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (8, 1, 'г. Карасук');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (9, 1, 'рп. Краснозерское');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (10, 1, 'г. Куйбышев');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (11, 1, 'рп. Ордынское');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (12, 1, 'г. Топки');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (13, 1, 'г. Тайга');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (14, 1, 'г. Тогучин');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (15, 1, 'г. Новоалтайск');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (16, 1, 'г. Заринск');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (17, 1, 'г. Юрга');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (18, 1, 'с. Мельниково');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (19, 1, 'пгт. Яшкино');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (20, 1, 'пгт. Промышленная');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (21, 1, 'г. Болотное');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (22, 1, 'рп. Линево');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (23, 1, 'рп. Колывань');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (24, 1, 'с. Довольное');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (25, 1, 'г. Обь');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (26, 1, 'г. Черепаново');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (27, 1, 'рп. Маслянино');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (28, 1, 'с. Красное');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (29, 1, 'рп. Тальменка');
+INSERT INTO "DP_APP"."CITY" (ID, COUNTRY_ID, NAME) VALUES (30, 1, 'рп. Краснообск');
+
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (1, 'kari KIDS');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (2, 'Ростелеком');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (3, 'Kari');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (4, 'АзияКредит');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (5, 'МегаФон');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (6, 'Связной');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (7, 'Евросеть');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (8, 'Билайн');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (9, 'Азиатско-Тихоокеанский Банк');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (10, 'ВОСТОЧНЫЙ БАНК');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (11, 'МТС Банк');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (12, 'ЛАНТА-БАНК');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (13, 'БАНК АКЦЕПТ');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (14, 'Русский Стандарт БАНК');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (15, 'БАНК ЛЕВОБЕРЕЖНЫЙ');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (16, 'ТОМСКПРОМСТРОЙБАНК');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (17, 'УРАЛСИБ БАНК');
+INSERT INTO "DP_APP"."BANK" (ID, NAME) VALUES (18, 'СКБ-БАНК');

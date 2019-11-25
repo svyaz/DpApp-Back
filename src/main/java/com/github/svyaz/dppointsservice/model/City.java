@@ -8,9 +8,10 @@ import java.util.Set;
 @Entity
 @Table(name = "CITY")
 public class City {
-    //TODO: сделать ID через базу
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CITY_SEQ_GEN")
+    @SequenceGenerator(name = "CITY_SEQ_GEN", sequenceName = "CITY_ID_SEQ",
+            initialValue = 1, allocationSize = 1)
     @Column(name = "ID")
     private Long id;
 

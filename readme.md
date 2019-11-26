@@ -13,6 +13,6 @@
 
 `pwd:  password`
 
-## Проинсталлировать oracle ojdbc7 локально если нету:
+### Проинсталлировать oracle ojdbc7 локально если нету:
 
 `mvn install:install-file -Dfile=ojdbc7.jar -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0.2 -Dpackaging=jar`

@@ -3,12 +3,10 @@ package com.github.svyaz.dppointsservice.controller;
 import com.github.svyaz.dppointsservice.converter.*;
 import com.github.svyaz.dppointsservice.dto.*;
 import com.github.svyaz.dppointsservice.service.*;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.List;
@@ -49,7 +47,6 @@ public class DpPointsController {
     }
 
     @GetMapping(value = "/countries")
-    @ResponseBody
     public ResponseEntity<List<CountryDto>> getCountries(
             @RequestParam(name = "filter", required = false) String filterString) {
         List<CountryDto> countryDtoList = countryToCountryDtoConverter.convert(countryService.getCountries(filterString));
@@ -57,7 +54,6 @@ public class DpPointsController {
     }
 
     @GetMapping(value = "/countries/{countryId}/cities")
-    @ResponseBody
     public ResponseEntity<List<CityDto>> getCities(
             @PathVariable(name = "countryId") @Min(1) @Max(999) //  всего 252 страны в мире
                     long countryId,
@@ -67,14 +63,12 @@ public class DpPointsController {
     }
 
     @GetMapping(value = "/services")
-    @ResponseBody
     public ResponseEntity<List<DpServiceDto>> getServices() {
         List<DpServiceDto> dpServiceDtoList = dpServiceToDpServiceDtoConverter.convert(dpServiceService.getServices());
         return ResponseEntity.ok(dpServiceDtoList);
     }
 
     @GetMapping(value = "/points")
-    @ResponseBody
     public ResponseEntity<List<DpPointDto>> getPoints(
             @RequestParam(name = "cityId") @Min(1) @Max(10_000_000)   // города со всеми деревнями (никто не знает)
                     long cityId,
@@ -83,9 +77,5 @@ public class DpPointsController {
         return ResponseEntity.ok(dpPointDtoList);
     }
 
-    @ExceptionHandler(ConstraintViolationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    ResponseEntity<String> handleConstraintViolationException(ConstraintViolationException e) {
-        return new ResponseEntity<>("Validation error: " + e.getMessage(), HttpStatus.BAD_REQUEST);
-    }
+
 }
